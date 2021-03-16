@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-app
+spec:
+  # The selector will select all pods with the defined tag
+  # key: value pair.
+  selector:
+    app: demo-app
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer

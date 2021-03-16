@@ -1,0 +1,14 @@
+# Base Kubernetes configuration. Define deployment aspects that are common
+# across all environments.
+#
+# See https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/
+# Note: The "Kustomization" kind is not references in the core Kubernetes API Spec.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Deploy all of the Kubernetes resources listed below.
+# See https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/#composing
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml

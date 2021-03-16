@@ -1,0 +1,22 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+metadata:
+  name: skaffold-demo-app
+build:
+  artifacts:
+    - image: ${yourImageTag}
+      sync:
+        infer:
+          - "**/*.js"
+          - "*.js"
+      docker:
+        dockerfile: Dockerfile
+  local:
+    push: true
+deploy:
+  kustomize:
+    path: k8s
+portForward:
+  - resourceType: deployment
+    resourceName: demo-app
+    port: 3000

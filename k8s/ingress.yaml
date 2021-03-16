@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-app
+spec:
+  rules:
+    - host: jimmy.ais-user.kube.ohio.edu
+      http:
+        paths:
+          - backend:
+              # The `serviceName` should match the name of the service defined
+              # in the `service.yaml` file in the base.
+              service:
+                name: demo-app
+                port:
+                  number: 3000
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - jimmy.ais-user.kube.ohio.edu
